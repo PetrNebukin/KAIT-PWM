@@ -50,7 +50,7 @@ PracticalWorksManager — это приложение для учета сдан
 
 ### 2.2 Установка приложения
 Чтобы установить "PracticalWorksManager":
-1. Перейдите в раздел Releases данного проекта и загрузите APPX-пакет
+1. Перейдите в раздел [Releases](https://github.com/PetrNebukin/KAIT-PWM/releases) данного проекта и загрузите APPX-пакет
 2. Нажмите сочетание клавиш Win+R и введите `powershell`
 3. В открывшемся окне пройдите в директори, в которую был ранее загружен APPX-пакет
 4. Введите: `Add-AppxPackage <названиефайла.appx>`
