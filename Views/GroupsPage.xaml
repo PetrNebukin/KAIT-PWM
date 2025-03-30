@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="PracticalWorksManager.Views.GroupsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PracticalWorksManager.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Button Content="Назад" Click="BackButton_Click" Margin="14" VerticalAlignment="Top"/>
+        <TextBlock Text="Группы" Style="{StaticResource TitleTextBlockStyle}" Margin="100,14,110,14"/>
+
+        <!-- List of Groups -->
+        <ListView x:Name="GroupsListView" Grid.Row="1" Margin="12"
+                  SelectionMode="Single"
+                  IsItemClickEnabled="True"
+                  ItemClick="GroupsListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding GroupName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add/Edit Group Form -->
+        <StackPanel Grid.Row="2" Margin="12">
+            <TextBox x:Name="GroupNameTextBox" Header="Название группы" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить" Click="AddButton_Click" Margin="0,0,10,0"/>
+                <Button Content="Обновить" Click="UpdateButton_Click" Margin="0,0,10,0"/>
+                <Button Content="Удалить" Click="DeleteButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

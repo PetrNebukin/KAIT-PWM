@@ -1,0 +1,53 @@
+﻿<Page
+    x:Class="PracticalWorksManager.Views.StudentsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PracticalWorksManager.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Button Content="Назад" Click="BackButton_Click" Margin="14" VerticalAlignment="Top"/>
+        <TextBlock Text="Студенты" Style="{StaticResource TitleTextBlockStyle}" Margin="100,14,14,14"/>
+
+
+        <!-- List of Students -->
+        <ListView x:Name="StudentsListView" Grid.Row="1" Margin="12"
+                  SelectionMode="Single"
+                  IsItemClickEnabled="True"
+                  ItemClick="StudentsListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding FirstName}" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding LastName}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add/Edit Student Form -->
+        <StackPanel Grid.Row="2" Margin="12">
+            <StackPanel Orientation="Horizontal" Width="Auto">
+                <ComboBox x:Name="GroupComboBox" Header="Группы" Width="auto" Margin="0,0,14,14"
+                          DisplayMemberPath="GroupName" SelectedValuePath="GroupID" SelectionChanged="GroupComboBox_SelectionChanged"/>
+                <TextBox x:Name="FirstNameTextBox" Header="Имя" Width="100" Margin="0,0,14,14" />
+                <TextBox x:Name="LastNameTextBox" Header="Фамилия" Width="100"  Margin="0,0,14,14" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить" Click="AddButton_Click" Margin="0,0,10,0"/>
+                <Button Content="Обновить" Click="UpdateButton_Click" Margin="0,0,10,0"/>
+                <Button Content="Удалить" Click="DeleteButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="PracticalWorksManager.Views.DeadlinesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PracticalWorksManager.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Button Content="Назад" Click="BackButton_Click" Margin="14" VerticalAlignment="Top"/>
+        <TextBlock Text="Дедлайны" Style="{StaticResource TitleTextBlockStyle}" Margin="100,14,110,14"/>
+
+        <StackPanel Grid.Row="2" Margin="12">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="GroupsCombo" Header="Группа" Margin="0,0,10,10"
+                          DisplayMemberPath="GroupName" SelectedValuePath="GroupID" SelectionChanged="GroupsCombo_SelectionChanged" Width="200"/>
+                <ComboBox x:Name="StudentComboBox" Header="Студент" Margin="0,0,10,10"
+                          DisplayMemberPath="FullName" SelectedValuePath="StudentID" SelectionChanged="StudentComboBox_SelectionChanged" Width="200"/>
+                <ComboBox x:Name="AssignmentComboBox" Header="Задание" Margin="0,0,0,10"
+                          DisplayMemberPath="AssignmentName" SelectedValuePath="AssignmentID" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+            <DatePicker x:Name="DeadlineDatePicker" Header="Срок сдачи" Margin="0,0,0,10"/>
+            <DatePicker x:Name="SubmissionDatePicker" Header="Дата сдачи" Margin="0,0,0,10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить" Click="AddButton_Click" Margin="0,0,10,0"/>
+                <Button Content="Изменить" Click="UpdateButton_Click" Margin="0,0,10,0"/>
+                <Button Content="Удалить" Click="DeleteButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ListView x:Name="DeadlinesListView" Grid.Row="1" Margin="12"
+                  SelectionMode="Single"
+                  IsItemClickEnabled="True"
+                  ItemClick="DeadlinesListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding AssignmentID}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding DeadlineDate}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
